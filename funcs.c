@@ -1,5 +1,15 @@
 #include <stdio.h>
-#include "funcs.h"
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <math.h>
+#include "menus.h"
+
+
+
+
+
+
 
 void menu_item_1(void) {
     printf("\n>> Menu 1\n");
@@ -19,8 +29,8 @@ void menu_item_3(void) {
     /* you can call a function from here that handles menu 3 */
 }
 
-void menu_item_4(void) {
-    printf("\n>> Menu 4\n");
+
+void help_menu(void) {
     printf("\nSome code here does something useful\n");
     /* you can call a function from here that handles menu 4 */
 }
