@@ -3,41 +3,25 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
-#include "menus.h"
-#warning "menus.c is being compiled"
+#include "tools.h"
 
-void print_help_menu(void);
-int is_integer(const char *s);
-int get_user_input(int menuItems);
+#define MAX_ADC 1023
 
-static void print_main_menu(void)
+
+void go_back_to_main(void)
 {
-    printf("\n----------- Main menu -----------\n");
-    printf("\n"
-           "\t\t\t\t\t\t\n"
-           "\t1. Menu item 1\t\t\n"
-           "\t2. Menu item 2\t\t\n"
-           "\t3. Menu item 3\t\t\n"
-           "\t4. Menu item 4\t\t\n"
-           "\t5. Exit\t\t\t\t\n"
-           "\t\t\t\t\t\t\n");
-    printf("---------------------------------------------\n");
+    char buf[64];
+    do {
+        printf("\nEnter 'b' or 'B' to go back: ");
+        if (!fgets(buf, sizeof(buf), stdin)) {
+            puts("\nInput error. Exiting.");
+            exit(1);
+        }
+        buf[strcspn(buf, "\r\n")] = '\0'; /* strip newline */
+    } while (!(buf[0] == 'b' || buf[0] == 'B') || buf[1] != '\0');
 }
 
 
-void print_help_menu(void) {
-    printf("\n----------- Help menu -----------\n");
-    printf("\n"
-           "\t\t\t\t\t\t\n"
-           "\t1. Menu item 1\t\t\n"
-           "\t2. Menu item 2\t\t\n"
-           "\t3. Menu item 3\t\t\n"
-           "\t4. Menu item 4\t\t\n"
-           "\t5. Exit\t\t\t\t\n"
-           "\t\t\t\t\t\t\n");
-    printf("---------------------------------------------\n");
-
-}
 
 /* Return 1 if s is an optional [+/-] followed by one-or-more digits, else 0. */
 int is_integer(const char *s)
@@ -58,7 +42,7 @@ int is_integer(const char *s)
 }
 
 
-int get_user_input(int menuItems) /*test*/
+int get_menu_choice(int menuItems) /**/
 {
     char buf[128];
     int valid_input = 0;
@@ -90,4 +74,11 @@ int get_user_input(int menuItems) /*test*/
     } while (!valid_input);
 
     return value;
+}
+
+
+int adc(double reading, int maxVoltage) {
+
+    double ratio = reading / maxVoltage;
+    double dReading = ratio * MAX_ADC;
 }

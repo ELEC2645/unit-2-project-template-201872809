@@ -3,9 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
-#include "menus.h"
-
-
+#include "help_menu.h"
 
 
 void menu_item_1(void) {
@@ -31,3 +29,4 @@ void menu_item_4(void) {
     printf("\nSome code here does something useful\n");
     /* you can call a function from here that handles menu 4 */
 }
+
