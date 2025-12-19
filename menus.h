@@ -1,8 +1,9 @@
-#ifndef FUNCS_H
-#define FUNCS_H
+#ifndef MENUS_H
+#define MENUS_H
 
-static int  is_integer(const char *s);
-static int get_user_input(int menuItems);
+int  is_integer(const char *s);
+int get_user_input(int menuItems);
 void print_help_menu(void);
+void print_main_menu(void);
 
 #endif

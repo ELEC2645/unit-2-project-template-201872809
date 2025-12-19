@@ -10,8 +10,10 @@
 #include "menus.h"
 
 /* Prototypes mirroring the C++ version */
+int main(void);
 static void main_menu(void);            /* runs in the main loop */
 static void go_back_to_main(void);      /* wait for 'b'/'B' to continue */
+
 
 int main(void)
 {
@@ -58,19 +60,6 @@ static void select_menu_item(int input)
     }
 }
 
-static void print_main_menu(void)
-{
-    printf("\n----------- Main menu -----------\n");
-    printf("\n"
-           "\t\t\t\t\t\t\n"
-           "\t1. Menu item 1\t\t\n"
-           "\t2. Menu item 2\t\t\n"
-           "\t3. Menu item 3\t\t\n"
-           "\t4. Menu item 4\t\t\n"
-           "\t5. Exit\t\t\t\t\n"
-           "\t\t\t\t\t\t\n");
-    printf("---------------------------------------------\n");
-}
 
 static void go_back_to_main(void)
 {

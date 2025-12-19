@@ -3,7 +3,26 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
+#include "menus.h"
+#warning "menus.c is being compiled"
 
+void print_help_menu(void);
+int is_integer(const char *s);
+int get_user_input(int menuItems);
+
+static void print_main_menu(void)
+{
+    printf("\n----------- Main menu -----------\n");
+    printf("\n"
+           "\t\t\t\t\t\t\n"
+           "\t1. Menu item 1\t\t\n"
+           "\t2. Menu item 2\t\t\n"
+           "\t3. Menu item 3\t\t\n"
+           "\t4. Menu item 4\t\t\n"
+           "\t5. Exit\t\t\t\t\n"
+           "\t\t\t\t\t\t\n");
+    printf("---------------------------------------------\n");
+}
 
 
 void print_help_menu(void) {
@@ -21,7 +40,7 @@ void print_help_menu(void) {
 }
 
 /* Return 1 if s is an optional [+/-] followed by one-or-more digits, else 0. */
-static int is_integer(const char *s)
+int is_integer(const char *s)
 {
     if (!s || !*s) return 0;
 
@@ -39,7 +58,7 @@ static int is_integer(const char *s)
 }
 
 
-static int get_user_input(int menuItems)
+int get_user_input(int menuItems) /*test*/
 {
     char buf[128];
     int valid_input = 0;
