@@ -6,28 +6,17 @@
 #include <stdbool.h>
 #include "tools.h"
 
-#define MENU_OPTIONS 6
 
-void help_menu(void);
 void help_item_1(void);
 void print_help_menu(void);
-static int select_help_item(int input);
+int select_help_item(int input);
 
 
 
-void help_menu(void)
-{
-    bool back = false;
-    while (back == false) {
-        print_help_menu();
-        int input = get_menu_choice(MENU_OPTIONS);
-        back = select_help_item(input);
-    
-    }
-}
 
 
-static int select_help_item(int input)
+
+int select_help_item(int input)
 {
     switch (input) {
         case 1:

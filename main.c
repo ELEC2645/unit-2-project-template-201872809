@@ -6,8 +6,10 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
-#include "funcs.h"
+#include <stdbool.h>
+
 #include "tools.h"
+#include "funcs.h"
 #include "help_menu.h"
 
 #define MENU_OPTIONS 6
@@ -43,7 +45,7 @@ static void select_menu_item(int input)
 {
     switch (input) {
         case 1:
-            menu_item_1();
+            adc_menu();
             go_back_to_main();
             break;
         case 2:
@@ -73,11 +75,12 @@ void print_main_menu(void)
     printf("\n----------- Main menu -----------\n");
     printf("\n"
            "\t\t\t\t\t\t\n"
-           "\t1. Menu item 1\t\t\n"
+           "\t1. Analogue to Digital Converter\t\t\n"
            "\t2. Menu item 2\t\t\n"
            "\t3. Menu item 3\t\t\n"
            "\t4. Menu item 4\t\t\n"
-           "\t5. Exit\t\t\t\t\n"
+           "\n5. Help Menu \t\t\n"
+           "\t6. Exit\t\t\t\t\n"
            "\t\t\t\t\t\t\n");
     printf("---------------------------------------------\n");
 }
