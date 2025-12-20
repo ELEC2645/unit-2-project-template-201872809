@@ -11,6 +11,7 @@
 #include "tools.h"
 #include "funcs.h"
 #include "help_menu.h"
+#include "sensor_menu.h"
 
 #define MENU_OPTIONS 6
 
@@ -38,6 +39,7 @@ static void main_menu(void)
         int input = get_menu_choice(MENU_OPTIONS);
         select_menu_item(input);
     }
+
 }
 
 
@@ -49,12 +51,10 @@ static void select_menu_item(int input)
             go_back_to_main();
             break;
         case 2:
-            menu_item_2();
-            go_back_to_main();
+            sensor_menu();
             break;
         case 3:
             menu_item_3();
-            go_back_to_main();
             break;
         case 4:
             menu_item_4();
@@ -67,6 +67,7 @@ static void select_menu_item(int input)
             printf("Bye!\n");
             exit(0);
     }
+
 }
 
 
@@ -76,12 +77,13 @@ void print_main_menu(void)
     printf("\n"
            "\t\t\t\t\t\t\n"
            "\t1. Analogue to Digital Converter\t\t\n"
-           "\t2. Menu item 2\t\t\n"
+           "\t2. Linear Sensors\t\t\n"
            "\t3. Menu item 3\t\t\n"
            "\t4. Menu item 4\t\t\n"
-           "\n5. Help Menu \t\t\n"
+           "\t5. Help Menu \t\t\n"
            "\t6. Exit\t\t\t\t\n"
            "\t\t\t\t\t\t\n");
     printf("---------------------------------------------\n");
+    
 }
 

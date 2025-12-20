@@ -6,7 +6,7 @@ int  is_integer(const char *s);
 int is_float(const char *s);
 int get_menu_choice(int menuItems);
 void go_back_to_main(void);
-float get_float_input(float max_value);
+float get_float_input(float min_value, float max_value);
 
 
 #endif

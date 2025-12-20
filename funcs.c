@@ -5,28 +5,37 @@
 #include <math.h>
 #include <stdbool.h>
 
+#include "sensor_menu.h"
 #include "help_menu.h"
 #include "tools.h"
 
 #define MAX_MAX_V 1000.0
-#define MENU_OPTIONS 6
+#define HELP_OPTIONS 6
+#define SENSOR_OPTIONS 4
 
 
-void adc_menu(void) {
+void adc_menu(void) 
+{
     printf("\n>> Analogue to Digital converter\n");
     printf("\nPlease enter the maximum voltage");
-    double maxVoltage = get_float_input(MAX_MAX_V);
+    double maxVoltage = get_float_input(0, MAX_MAX_V);
+
     printf("\nPlease enter the reading");
-    double reading = get_float_input(maxVoltage);
+    double reading = get_float_input(0, maxVoltage);
 
     printf("\nYour digital reading is: %d", adc(reading, maxVoltage));
 
 }
 
-void menu_item_2(void) {
-    printf("\n>> Menu 2\n");
-    printf("\nSome code here does something useful\n");
-    /* you can call a function from here that handles menu 2 */
+void sensor_menu(void) 
+{
+    bool back = false;
+    while (back == false) {
+        print_sensor_menu();
+        int input = get_menu_choice(SENSOR_OPTIONS);
+        back = select_sensor(input);
+    }
+
 }
 
 void menu_item_3(void) {
@@ -42,14 +51,13 @@ void menu_item_4(void) {
 }
 
 
-
 void help_menu(void)
 {
     bool back = false;
     while (back == false) {
         print_help_menu();
-        int input = get_menu_choice(MENU_OPTIONS);
+        int input = get_menu_choice(HELP_OPTIONS);
         back = select_help_item(input);
-    
     }
+
 }

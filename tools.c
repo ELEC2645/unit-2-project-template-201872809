@@ -8,11 +8,11 @@
 #define MAX_ADC 1023
 
 int adc(double reading, int maxVoltage);
-int  is_integer(const char *s);
+int is_integer(const char *s);
 int is_float(const char *s);
 int get_menu_choice(int menuItems);
 void go_back_to_main(void);
-float get_float_input(float max_value);
+float get_float_input(float min_value, float max_value);
 
 
 
@@ -27,6 +27,7 @@ void go_back_to_main(void)
         }
         buf[strcspn(buf, "\r\n")] = '\0'; /* strip newline */
     } while (!(buf[0] == 'b' || buf[0] == 'B') || buf[1] != '\0');
+
 }
 
 
@@ -47,6 +48,7 @@ int is_integer(const char *s)
         s++;
     }
     return 1;
+
 }
 
 /* Returns 1 if s represents a valid decimal and 0 if not */
@@ -57,8 +59,8 @@ int is_float(const char *s)
     char *endptr;
     strtod(s, &endptr);
 
-    
     return (*endptr == '\0');// checking the end pointer is actually the end not another symblo or letter
+
 }
 
 
@@ -94,24 +96,25 @@ int get_menu_choice(int menuItems) /**/
     } while (!valid_input);
 
     return value;
+
 }
 
 
-int adc(double reading, int maxVoltage) {
-
+int adc(double reading, int maxVoltage) 
+{
     double ratio = reading / maxVoltage;
     return ratio * MAX_ADC;
 }
 
 
-float get_float_input(float max_value)
+float get_float_input(float min_value, float max_value)
 {
     char buf[128];
     int valid_input = 0;
     float value = 0.0f;
 
     while (!valid_input) {
-        printf("\nEnter a value (0 - %.2f): ", max_value);
+        printf("\nEnter a value (%.2f - %.2f): ", min_value, max_value);
         if (!fgets(buf, sizeof(buf), stdin)) {
             puts("\nInput error. Exiting.");
             exit(1);
@@ -125,7 +128,7 @@ float get_float_input(float max_value)
             valid_input = 0;
         } else {
             value = strtof(buf, NULL);
-            if (value >= 0.0f && value <= max_value) {
+            if (value >= min_value && value <= max_value) {
                 valid_input = 1;
             } else {
                 printf("Value out of range! Must be between 0 and %.2f\n", max_value);
@@ -133,7 +136,7 @@ float get_float_input(float max_value)
             }
         }
     }
-
     return value;
+
 }
 
